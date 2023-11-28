@@ -1,4 +1,5 @@
-<?php  include('db.php'); ?>
+<?php  include('../dashboard/db.php'); ?>
+
 
 <!doctype html>
 <html lang="en">
@@ -18,13 +19,14 @@
   <body class="flex">
   <side class="text-base rounded-3xl w-[15%] h-full py-[1%] px-[1%] bg-teal-500 border">
     <div class="flex flex-col ml-[2%] mb-[10%] text-lg">
+    <a href="../log/home.php"><img src="../main-logo.svg" alt="main-logo"></a>
+    <a class="flex p-3 mb-15 w-3/4 h-14 transition-transform duration-200 ease-out transform-colors  hover:scale-110 rounded mb-[10%] block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" href="../log/home.php">Home</a>
     <a class="flex p-3 mb-15 w-3/4 h-14 transition-transform duration-200 ease-out transform-colors  hover:scale-110 rounded mb-[10%] block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" 
     href="statistic.php">Statistic</a>
-    <a class="flex p-3 mb-15 w-3/4 h-14 transition-transform duration-200 ease-out transform-colors  hover:scale-110 rounded mb-[10%] block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" href="index.php">User</a>
-    <a class="flex p-3 mb-15 w-3/4 h-14 transition-transform duration-200 ease-out transform-colors  hover:scale-110 rounded mb-[10%] block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" href="freelencer.php">Freelencer</a>
-       
-        <a class="flex p-3 mb-15 w-3/4 h-14 transition-transform duration-200 ease-out transform-colors  hover:scale-110 rounded mb-[10%] block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"  href="projects.php">Project</a>
-        <a class="flex p-3 mb-15 w-3/4 h-14 transition-transform duration-200 ease-out transform-colors  hover:scale-110 rounded mb-[10%] block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"  href="categories.php">Categorie</a>
+    <a class="flex p-3 mb-15 w-3/4 h-14 transition-transform duration-200 ease-out transform-colors  hover:scale-110 rounded mb-[10%] block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" href="../dashboard/index.php">User</a>
+    <a class="flex p-3 mb-15 w-3/4 h-14 transition-transform duration-200 ease-out transform-colors  hover:scale-110 rounded mb-[10%] block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" href="../dashboard/freelencer.php">Freelencer</a>
+    <a class="flex p-3 mb-15 w-3/4 h-14 transition-transform duration-200 ease-out transform-colors  hover:scale-110 rounded mb-[10%] block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"  href="../dashboard/categories.php">Categorie</a>
+    <a class="flex p-3 mb-15 w-3/4 h-14 transition-transform duration-200 ease-out transform-colors  hover:scale-110 rounded mb-[10%] block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"  href="../dashboard/projects.php">Project</a>
     </div>
 
     </side>  

@@ -1,4 +1,4 @@
-DROP DATABASE data_crud;
+-- DROP DATABASE data_crud;
 CREATE DATABASE data_crud;
 USE data_crud;
 
