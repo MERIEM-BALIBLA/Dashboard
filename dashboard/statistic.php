@@ -1,18 +1,11 @@
-<!-- <php  include('inc/header.php'); ?> -->
-<?php  include('../inc/header.php'); ?>
+       
+<?php  
+      include('../inc/header.php'); ?>
 
 <div class="container-fluid flex flex-col"  style="width:100%">
-    <nav class="w-[65%] p-2">
-     <div class="text-black dark:text-white">
-                <div class="flex gap-2">
-                  <h2 class="font-bold text-2xl"> Welcome Back,Ali</h2>
-                  <img src="Waving Hand Emoji.svg" alt="waving hand">
-                </div>
-                <p class="text-textG text-base">Here's what's happening with your store touday</p>
-            </div>
-     </nav>
      
-     <section class="text-gray-600 body-font flex flex-wrap">
+<div class="flex flex-col">
+<section class="text-gray-600 body-font flex flex-wrap">
       <div class="p-4 md:w-1/6 sm:w-1/2 ml-[10%] ">
         <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
           <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="text-indigo-500 w-12 h-12 mb-3 inline-block" viewBox="0 0 24 24">
@@ -80,9 +73,43 @@
         </div>
       </div>
     </div>
-  </div>
 
 </section>
+<section class="p-6">
+  <div class="w-[60%] border rounded-lg overflow-hidden dark:border-gray-700 ">
+  <table class="w-full divide-y divide-gray-200 dark:divide-gray-700">
+    <thead class="bg-gray-50 dark:bg-gray-700">
+      <tr >
+      <th class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-gray-400">Client</th>
+      <th class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-gray-400">Contact</th>
+      <th class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-gray-400">Project</th>
+    </tr>
+    </thead>
+    
+    <?php
+                // $sql = "SELECT * FROM `User` ORDER BY `User_ID` DESC LIMIT 4";
+                $sql="SELECT User.User_ID, User.name, User.lname, User.Email_Adress, COUNT(project.Project_ID) AS Projects
+                FROM User
+                LEFT JOIN project ON User.User_ID = project.User_ID
+                GROUP BY User.User_ID, User.name, User.lname, User.Email_Adress;";
+                $result = mysqli_query($conn,$sql);
+            ?>
+                <?php if(mysqli_num_rows($result) > 0):?>
+                <?php while($row = mysqli_fetch_assoc($result)):?> 
+    <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+      <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200"><?php echo $row['name']?> <?php echo $row['lname']?></td>
+      <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200"><?php echo $row['Email_Adress']?></td>
+      <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200"><?php echo $row['Projects']?></td>
+
+    </tbody>
+    <?php endwhile;?> 
+            <?php endif;?>
+  </table>
+ 
+  <!--  -->
+  </div>
+</section>
+</div>
 <!-- <section>
   <div class="p-4 md:w-1/6 sm:w-1/2 ml-[10%] ">
         <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">

@@ -1,18 +1,25 @@
 <!-- <php  include('inc/header.php'); -->
-<?php  include('../inc/header.php');
-
-       include('../inc/validtaion.php'); ?>
-<?php
+<?php  
+    //    require ('../log/login.php');
+       include('../inc/header.php');
+       include('../inc/validtaion.php'); 
+    //    file_uploads = On;
      
     if(isset($_POST['submit'])){
         $categorie = santString($_POST['categorie']);
         $descrip = santIEmail($_POST['description']);
+        // $image = santIEmail($_POST['image_file']);
         if(requiredInput($categorie) && requiredInput($descrip)){
             if(minInput($categorie,3) && maxInput($descrip,20)){
                     // $hashed_password = password_hash(password_PASSWORD_DEFAULT);
+        // $image =$_POST['image_file'];
+      
                     $sql = "INSERT INTO `Categories`(`Categorie_Name`,`description`) VALUES ('$categorie','$descrip')";
                     $result = mysqli_query($conn,$sql);
-                    header("refresh:3;url=categories.php");
+                    // header('location: categories.php');
+                    ?>
+                    <?php echo '<script>window.location.href="categories.php";</script>';?>
+<?php
                     if($result){
                         $succes = "Added Successfully";
                     }
@@ -25,37 +32,30 @@
         }
 ?>
     <div class="container-fluid"  style="width:100%">
-    <nav class="w-[65%] p-2">
-     <div class="text-black dark:text-white">
-                <div class="flex gap-2">
-                  <h2 class="font-bold text-2xl"> Welcome Back,Ali</h2>
-                  <img src="Waving Hand Emoji.svg" alt="waving hand">
-                </div>
-                <p class="text-textG text-base">Here's what's happening with your store touday</p>
-            </div>
-     </nav>
-     <h1>Add New User</h1>
+    
     <!-- <php if($error): ?>
         <h5><php echo $error; ?></h5>
     <php endif; ?>
     <php if($succes): ?>
         <h5><php echo $succes; ?></h5>
     <php endif; ?> -->
-    <div class="w-[50%] mx-[6%]">
+    <div class="flex flex-col items-center justify-between p-6 lg:p-24 bg-neutral-200">
         
-        <form class="my-2 p-3 border" method="POST" action="<?php echo $_SERVER['PHP_SELF'];?>">
-            <div class="form-group">
-                <label>Categorie</label>
-                <input type="text" name="categorie" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="exampleInputPassword1">
-            </div>
+        <form class="bg-white w-full max-w-3xl mx-auto px-4 lg:px-6 py-8 shadow-md rounded-md flex flex-col" method="POST" action="<?php echo $_SERVER['PHP_SELF'];?>">
+            <div><h1>Add New User</h1></div>
+            <div class="mb-4">
+                <label>
+                <input type="text" name="categorie" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="exampleInputPassword1" placeholder="Categorie title"></label>
+            </div class="mb-4">
             <input type="hidden" name="id" value="<?php echo $idd;?>">
-            <div class="form-group">
-                <label for="exampleInputName1">Petite description</label>
-                <input type="text" name="description" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <div class="mb-4">
+                <label for="exampleInputName1">
+                <input type="text" name="description" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="exampleInputEmail1" placeholder="Petite description"></label>
             </div>
-                <button type="submit" class="btn btn-primary" name="submit">Submit</button>
-            </div>
+            <button class="w-full inline-block pt-4 pr-5 pb-4 pl-5 text-xl font-medium text-center text-white bg-indigo-500
+                  rounded-lg transition duration-200 hover:bg-indigo-600 ease" type="submit" name="submit">Submit</button>
         </form>
+        
     </div>
    
     <?php  include('../inc/footer.php'); ?>

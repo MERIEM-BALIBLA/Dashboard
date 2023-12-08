@@ -1,29 +1,22 @@
-<?php  include('../inc/header.php'); ?>
-<?php
-    $sql = "SELECT * FROM `Categories`";
-    $result = mysqli_query($conn,$sql);
+<?php 
+include('../inc/header.php');
+
+$sql = "SELECT * FROM `Categories`";
+$result = mysqli_query($conn,$sql);
 ?>
     <div class="container-fluid"  style="width:100%">
-    <nav class="w-[65%] p-2">
-     <div class="text-black dark:text-white">
-                <div class="flex gap-2">
-                  <h2 class="font-bold text-2xl"> Welcome Back,Ali</h2>
-                  <img src="Waving Hand Emoji.svg" alt="waving hand">
-                </div>
-                <p class="text-textG text-base">Here's what's happening with your store touday</p>
-            </div>
-     </nav>
+
     <div class="row">
-        <div class="overflow-x-auto p-6 flex flex-col justify-center">
+    <div class="w-full px-[8%] py-8">
+
             <table class="border-collapse border border-gray-300 bg-gray-100">
                 <thead>
-                    <tr class="bg-gray-300">
-                    <!-- <th class="border-y border-gray-100 bg-gray-50/50 p-2" scope="col">#</th> -->
-                    <th class="border-y border-gray-100 bg-gray-50/50 p-2" scope="col">Categorie Name</th>
-                    <!-- <th class="border-y border-gray-100 bg-gray-50/50 p-2" scope="col">Country</th> -->
-                    <th class="border-y border-gray-100 bg-gray-50/50 p-2" scope="col">Description</th>
-                    <th class="border-y border-gray-100 bg-gray-50/50 p-2" scope="col">Edit</th>
-                    <th class="border-y border-gray-100 bg-gray-50/50 p-2" scope="col">Delete</th>
+                    <tr class="bg-indigo-500 text-white">
+                    <th class="border-y border-gray-100 p-2" scope="col">Categorie Name</th>
+                    <th class="border-y border-gray-100 p-2" scope="col">Description</th>
+                    <th class="border-y border-gray-100 p-2" scope="col">Edit</th>
+                    <th class="border-y border-gray-100 p-2" scope="col">Delete</th>
+                    <!-- <th class="border-y border-gray-100 bg-gray-50/50 p-2" >Picture</th> -->
                     </tr>
                 </thead>
                 <tbody>

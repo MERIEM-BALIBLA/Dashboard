@@ -13,11 +13,10 @@
     // sanitize string inout
     function santString($value){
         $str = trim($value);
-        // Initialize $str with an empty string
-        // $str = '';
         // Use filter_var with the updated constant
         $str = filter_var($str, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         // Continue with the rest of your validation or processing logic
+        $str = preg_replace('/[^A-Za-z\s]/', '', $str);
         return $str;
     }
 

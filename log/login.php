@@ -1,96 +1,54 @@
-<?php  include('header.php');?>
-<section class="flex justify-center gradient-form h-full bg-neutral-200 dark:bg-neutral-700">
-  <div class="container h-full py-10 px-[10%]">
-    <div
-      class="g-6 flex h-full flex-wrap items-center justify-center text-neutral-800 dark:text-neutral-200">
-      <div class="w-full">
-        <div
-          class="block rounded-lg bg-white shadow-lg dark:bg-neutral-800">
-          <div class="g-0 lg:flex lg:flex-wrap">
-            <!-- Left column container-->
-            <div class="px-4 md:px-0 lg:w-6/12">
-              <div class="md:mx-6 md:p-12">
-                <!--Logo-->
-                <div class="text-center">
-                  <img
-                    class="mx-auto w-48"
-                    src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
-                    alt="logo" />
-                  <h4 class="mb-12 mt-1 pb-1 text-xl font-semibold">
-                    We are The Lotus Team
-                  </h4>
-                </div>
+<?php
+session_start();
 
-                <form>
-                  <p class="mb-4">Please login to your account</p>
-                  <!--Username input-->
-                  <div class="relative mb-4" data-te-input-wrapper-init>
-                    <input
-                      type="text"
-                      class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                      id="exampleFormControlInput1"
-                      placeholder="Username" />
-                    <label
-                      for="exampleFormControlInput1"
-                      class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
-                      >Username
-                    </label>
-                  </div>
+include('../db.php');
 
-                  <!--Password input-->
-                  <div class="relative mb-4" data-te-input-wrapper-init>
-                    <input
-                      type="password"
-                      class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                      id="exampleFormControlInput11"
-                      placeholder="Password" />
-                    <label
-                      for="exampleFormControlInput11"
-                      class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
-                      >Password
-                    </label>
-                  </div>
+// echo"ezhfkze";
+if(isset($_POST['submit'])){
+    $email = $_POST['email'];
+$password = $_POST['pass_word'];
+    // préparez une requête avec un seul paramètre pour l'e-mail
+    $sql = "SELECT * FROM `User` WHERE `Email_Adress` = ?";
 
-                  <!--Submit button-->
-                  <div class="mb-12 pb-1 pt-1 text-center">
-                    <button
-                      class="mb-3 inline-block w-full rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_rgba(0,0,0,0.2)] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)]"
-                      type="button"
-                      data-te-ripple-init
-                      data-te-ripple-color="light"
-                      style="
-                        background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
-                      ">
-                      Log in
-                    </button>
+    // préparez la requête
+    $stmt = mysqli_prepare($conn, $sql);
 
-                    <!--Forgot password link-->
-                    <a href="#!">Forgot password?</a>
-                  </div>
+    // liez le paramètre (uniquement pour l'e-mail)
+    mysqli_stmt_bind_param($stmt, 's', $email);
 
-                  <!--Register button-->
-                  <div class="flex items-center justify-between pb-6">
-                    <p class="mb-0 mr-2">Don't have an account?</p>
-                    <button
-                      type="button"
-                      class="inline-block rounded border-2 border-danger px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-danger transition duration-150 ease-in-out hover:border-danger-600 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-danger-600 focus:border-danger-600 focus:text-danger-600 focus:outline-none focus:ring-0 active:border-danger-700 active:text-danger-700 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10"
-                      data-te-ripple-init
-                      data-te-ripple-color="light">
-                      Register
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
+    // exécutez la requête préparée
+    mysqli_stmt_execute($stmt);
 
-            <!-- Right column container with background and description-->
-            <div>
-              
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    // obtenez le résultat (mysqli_stmt_get_result)
+    $result = mysqli_stmt_get_result($stmt);
+
+    if ($row = mysqli_fetch_assoc($result)) {
+
+        if (password_verify($password, $row['pass_word'])) {
+    
+            $_SESSION['name'] = ($row['name'] ?? 'No Name Found');
+            $_SESSION['lname'] = ($row['name'] ?? 'No Name Found') . ' ' . ($row['lname'] ?? 'No Last Name Found');
+            $_SESSION['user_id'] = $row['User_ID'];
+            $_SESSION['role'] = $row['role_ID'];
+
+            // $_SESSION['Email_Adress'] = $row['Email_Adress'];
+
+            setcookie('email', $email, time() + 2*60,'/');
+            setcookie('pass_word', $password, time() + 2*60,'/');
+            
+            ob_start();
+            header('Location: home.php');
+            ob_end_flush();
+            exit();
+        } else {
+            echo 'Mot de passe incorrect';
+            header('Location: loginPage.php');
+            exit();
+        }
+    } else {
+        echo 'Email invalide';
+        header('Location: loginPage.php');
+        exit();
+    }
+}
+?>

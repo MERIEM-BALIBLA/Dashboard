@@ -1,7 +1,5 @@
-<!-- <php  include('inc/header.php'); ?> -->
-<?php  include('../inc/header.php'); ?>
-
-<?php include('inc/validtaion.php'); ?>
+<?php  include('../inc/header.php'); 
+       include('../inc/validtaion.php'); ?>
 
     <?php
     if(isset($_POST['submit'])){
@@ -11,7 +9,6 @@
         if(requiredInput($name) && requiredInput($email)){
 
             if(minInput($name,3)){
-
                 if(validateEmail($email)){
                     $id = $_POST['id'];
                     if($password){
@@ -27,7 +24,9 @@
                     $result = mysqli_query($conn,$sql);
                     if($result){
                         $succes = "Updated Successfully";
-                        header("refresh:3;url=index.php");
+                        // header("location: index.php");
+                    echo '<script>window.location.href="index.php";</script>';
+
                     }
                 }else{
                     $error = "Valid your Email";
